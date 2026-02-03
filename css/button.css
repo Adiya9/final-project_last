@@ -1,0 +1,74 @@
+.button {
+    padding-block: 12px;
+    padding-inline: 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: brightness 150ms ease-in-out;
+    cursor: pointer;
+    border:none;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.button:hover{
+    filter: brightness(90%);
+}
+
+button:hover{
+    filter: brightness(90%);
+}
+
+.button--small{
+    padding-block: 8px;
+    padding-inline: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border:none;
+}
+
+.button--blue{
+    background-color: #0077B6;
+    color:#fff;
+}
+
+.button--red{
+    background-color: #C1121F;
+    color:#fff;
+}
+
+.btn-box{
+    border: none;
+    width:80px;
+    height:80px;
+    border-radius: 40px;
+}
+
+.box1{
+    position: fixed;
+    z-index:999;
+    top:75%;
+    right:10px;
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.place--button{
+    margin-left:600px;
+}
+
+.button--green{
+    display: block;
+    width:80px;
+    height:80px;
+    border-radius: 40px;
+    background-color:#52B788;
+    padding:24px;
+    position:fixed;
+    top:80%;
+    right:10px;
+    color:white;
+    font-size: 50px;
+    padding:0px 8px;
+}
+

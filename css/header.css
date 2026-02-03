@@ -1,0 +1,76 @@
+.header{
+    display:flex;
+    width:1328px;
+    height:96px;
+    padding-top:24px;
+    padding-bottom:24px;
+    gap:48px;
+}
+.header__nav ol{
+    float: left;
+    display:flex;
+    list-style-type: none;
+    width:271px;
+    height:40px;
+    gap:24px;
+}
+.header__nav-link--active{
+    width:116px;
+    height:40px;
+    border-radius:8px;
+    padding:8px 24px 8px 24px;
+    color:#3D3D3D;
+    font-size:16px;
+}
+.header__nav-link{
+    color:#3D3D3D;
+    font-size:16px;
+}
+.header__auth a{
+    background-color:#0077B6;
+    width:96px;
+    height:48px;
+    border-radius:8px;
+    padding: 12px 24px 12px 24px;
+    gap:10px;
+    color:#FFFFFF;
+    font-size:16px;
+    margin-left:700px;
+}
+.header__auth1{
+    display:flex;
+    gap:16px;
+    align-items: center;
+    float:right;
+    margin-left:600px;
+}
+.header__auth1 img{
+    width:32px;
+    height:32px;
+    border-radius:16px;
+}
+.header__auth1 h5{
+    font-size:14px;
+    font-weight:400;
+    color:#3D3D3D;
+}
+.header__auth1 button{
+    background-color:#C1121F;
+    padding:8px 16px 8px 16px;
+    border-radius:8px;
+    color:#FFFFFF;
+    font-size:14px;
+    font-weight:600;
+    border:solid 1px #C1121F;
+}
+
+.header__auth_login{
+    display:flex;
+    gap:20px;
+    align-items: center;
+    margin-left:500px;
+}
+.header__auth_login p{
+    font-size: 14px;
+    color:#3D3D3D;
+}

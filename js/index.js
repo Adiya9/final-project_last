@@ -1,6 +1,6 @@
-const BASE_URL = "https://webfinalapi.mobydev.kz/news/news_images/e106cdbacc5ffca5cc4d3187aee0d9d3"
+const BASE_URL = "https://webfinalapi.mobydev.kz"
 
-async function fetchAndRebderNews(params){
+async function fetchAndRenderNews(params){
     try{
         const response = await fetch(`${BASE_URL}/news`);
         if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status}`);
@@ -16,7 +16,7 @@ async function fetchAndRebderNews(params){
                     </div>
 
                     <div class="news-card__content">
-                        <a class="news-card__link" href="./detail-news.html?id=${news.id}">
+                        <a class="news-card__link" href="./news.html?id=${news.id}">
                             <h2 class="news-card__title">${news.title}</h2>
                             <p class="news-card__attributes">
                                ${news.createdAt} ${news.category.name || "Категория"}
@@ -50,12 +50,13 @@ async function fetchAndRebderNews(params){
                     </div>
                 </article>
                 `).join('');
+                setupActionButtons();
     }catch (error){
         console.error('Ошибка при получении новостей',error);
     }
 }
 
-document.addEventListener('DOMContentLoaded',fetchAndRebderNews);
+document.addEventListener('DOMContentLoaded',fetchAndRenderNews);
 
 //active button color
 const newsBtn = document.getElementById('newsId');
@@ -68,4 +69,49 @@ newsBtn.addEventListener('click',() => {
 categoryBtn.addEventListener('click',() => {
     categoryBtn.classList.add('active');
     newsBtn.classList.remove('active');
+});
+
+function setupActionButtons(){
+    const authToken = localStorage.getItem("authToken");
+
+    const headerAuth = document.querySelector('.header__auth');
+    if (authToken){
+        headerAuth.innerHTML = '<div class=place--button> <button class="button button--red " onclick="logout()">Выйти</button> </div>';
+
+    }
+    document.querySelectorAll(".news-card__actions a").forEach(link => {
+        link.addEventListener("click", event => {
+            if(!authToken){
+                event.preventDefault();
+                alert("Авторизуйтесь для редактирования");
+            }
+        });
+    });
+
+    document.querySelectorAll(".news-card__actions button").forEach(button => {
+        button.addEventListener("click", () => {
+            if(!authToken) return alert("Авторизуйтесь для удаления");
+            //deleteNews(button.getAttribute("onclick").match()
+        });
+    });
+}
+
+function displayCreatedButton(){
+    if(localStorage.getItem("authToken")){
+        const createButton = document.createElement("button");
+        createButton.className="button button--green";
+        createButton.textContent="+";
+        createButton.onclick = () => (window.location.href = "./create.html");
+        document.querySelector('.news-grid').before(createButton);
+    }
+}
+
+function logout() {
+    localStorage.removeItem("authToken");
+    window.location.reload();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetchAndRenderNews();
+    displayCreatedButton();
 });
