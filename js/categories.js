@@ -1,4 +1,5 @@
 const API_URL = "https://webfinalapi.mobydev.kz/categories"; // твой сервер
+const API_URL1 = "https://webfinalapi.mobydev.kz"; // твой сервер
 
 // Загрузка категорий
 async function loadCategories() {
@@ -40,9 +41,13 @@ async function loadCategories() {
 
 // Удаление категории
 function deleteCategory(id) {
+        const authToken = localStorage.getItem("authToken");
+
     if (!confirm("Вы уверены, что хотите удалить категорию?")) return;
 
-    fetch(`${API_URL}/${id}`, { method: "DELETE" })
+    fetch(`${API_URL1}/category/${id}`, { method: "DELETE" ,headers: {
+                'Authorization': `Bearer ${authToken}`
+            }})
         .then(response => {
             if (!response.ok) {
                 throw new Error("Ошибка при удалении категории");
