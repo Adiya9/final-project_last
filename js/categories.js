@@ -21,7 +21,7 @@ async function loadCategories() {
                 li.innerHTML = `
                     <p>${category.name}</p>
                     <div class="category_line">
-                        <a href="./edit-news.html?id=${category.id}" class="button button--blue button--small">
+                        <a href="./edit_category.html?id=${category.id}" class="button button--blue button--small">
                             Редактировать
                         </a>
                         <button type="button" class="button button--red button--small" onclick="deleteCategory(${category.id})">

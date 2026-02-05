@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const headerAuth = document.querySelector(".header__auth");
 
     if (authToken) {
-    headerAuth.innerHTML = `<button class="button button--red" onclick="logout()">Выйти</button>`
+    headerAuth.innerHTML = `<button class="button button--red margin-edit" onclick="logout()">Выйти</button>`
     }
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -35,7 +35,7 @@ document.querySelector(".container").addEventListener('submit', async (event) =>
     const thumbnail = document.querySelector('.cover-input').files[0];
 
     if (!title || !content || !categoryId || !thumbnail){
-        alert('Пожалуйста, зфполните все поля');
+        alert('Пожалуйста, заполните все поля');
         return;
     }
 
